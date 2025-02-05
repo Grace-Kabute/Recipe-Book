@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe</title>
+    <link rel="stylesheet" href="../CSS/Style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header-container">
+            <h2 class="logo">Food<span>i</span>es</h2>
+            <nav class="dropdown">
+                <button>
+                    <img src="../dropdown.png" alt="navbar">
+                </button>
+                <div class="navbar">
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Recipes</a></li>
+                        <li><a href="#">My Recipe Book</a></li>
+                        <li><a href="#">Shopping List</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <main>
+            <section class="search-bar">
+                <input type="text" id="search-input" placeholder="Search recipe by name or ingredients">
+                <button id="search-button" class="search-button">Search</button>
+            </section>
+            <section class="categories">
+                <h2>Categories</h2>
+                <div class="category-btn">
+                    <button id="allButton">All</button>
+                    <button id="mainCourseButton">Main Course</button>
+                    <button id="dessertButton">Dessert</button>
+                    <button id="appetizerButton">Appetizers</button>
+                    <button id="breakfastButton">Breakfast</button>
+                    <button id="veganButton">Vegan</button>
+                    <button id="saladButton">Salad</button>
+                    <button id="soupButton">Soup</button>
+                    <button id="beveragesButton">Beverages</button>
+                    <button id="cocktailButton">Cocktails</button>
+                </div>               
+            </section>
+            <section>
+                <div class="recipe-grid" id="recipe-container">
+                    <!-- Recipes will appear here -->
+                </div>
+            </section>
+        </main>
+        <footer>
+        </footer>
+    </div>
+    <script src="../Script/App.js"></script>
+</body>
+</html>

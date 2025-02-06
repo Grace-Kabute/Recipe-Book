@@ -17,6 +17,37 @@ async function getRecipes(recipeName = '', ingredients = '', recipeType = '', so
     }
 }
 
+function displayRecipes(recipes, category) {
+    const recipeContainer = document.getElementById('recipe-container');
+    recipeContainer.innerHTML = ''; // Clear previous content
+
+    const categorySection = document.createElement('div');
+    categorySection.classList.add('category-section');
+    categorySection.innerHTML = `<h2>${category}</h2>`;
+
+    recipes.forEach(recipe => {
+        const recipeElement = document.createElement('div');
+        recipeElement.classList.add('recipe-item');
+        recipeElement.innerHTML = `
+            <h3>${recipe.title}</h3>
+            <img src="${recipe.image}" alt="${recipe.title}" class="recipe-image">
+            <p>Ready in ${recipe.readyInMinutes} minutes</p>
+            <a href="recipe.html" onclick="saveRecipeID(${recipe.id})">View Recipe</a>
+        `;
+        categorySection.appendChild(recipeElement);
+    });
+
+    recipeContainer.appendChild(categorySection);
+}
+
+
+function saveRecipeID(recipeID) {
+    localStorage.setItem('selectedRecipeID', recipeID);
+    console.log("Recipe ID stored:", recipeID); // Debugging line
+    // window.location.href = 'recipe.html'; // Navigate after saving
+}
+saveRecipeID()
+
 function recipesFromLocalStorage() {
     const storedRecipes = localStorage.getItem('recipes');
     if (storedRecipes) {
@@ -33,30 +64,6 @@ function refreshRecipes() {
     getRecipes(); // Fetch fresh data
 }
 refreshRecipes()
-
-function displayRecipes(recipes, category) {
-    const recipeContainer = document.getElementById('recipe-container');
-    recipeContainer.innerHTML = ''; // Clear previous content
-
-    const categorySection = document.createElement('div');
-    categorySection.classList.add('category-section');
-    categorySection.innerHTML = `<h2>${category}</h2>`;
-
-    recipes.forEach(recipe => {
-        const recipeElement = document.createElement('div');
-        recipeElement.classList.add('recipe-item');
-        recipeElement.innerHTML = `
-            <h3>${recipe.title}</h3>
-            <img src="${recipe.image}" alt="${recipe.title}" class="recipe-image">
-            <p>Ready in ${recipe.readyInMinutes} minutes</p>
-            <a href="${recipe.sourceUrl}" target="_blank">View Recipe</a>
-        `;
-        categorySection.appendChild(recipeElement);
-    });
-
-    recipeContainer.appendChild(categorySection);
-}
-
 
 const categories = {
     allButton: '',
